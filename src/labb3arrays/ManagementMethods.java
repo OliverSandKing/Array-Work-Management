@@ -2,6 +2,7 @@ package labb3arrays;
 
 import java.util.Scanner;
 // TO DO: Move menu methods to ManagementMainMenu, sort methods and BUG FIX!
+
 public class ManagementMethods {
 
     static Scanner scnr = new Scanner(System.in);
@@ -97,20 +98,21 @@ public class ManagementMethods {
     }
 
     public static void removeWorker(int ID) {
-        boolean noMatch = false;
+        boolean noMatch = true;
 
         for (int i = 0; i < counter; i++) {
             if (ID == employees[i].getID()) {
-                for (int j = i; j < employees.length; j++) {
+                for (int j = i; j < counter-1; j++) {
                     employees[j] = employees[j + 1];
                 }
                 counter--;
                 employees[counter] = null;
-                noMatch = true;
+                noMatch = false;
             }
-            if (noMatch) {
-                System.out.println("There's no employee with that ID");
-            }
+
+        }
+        if (noMatch) {
+            System.out.println("There's no employee with that ID");
         }
     }
 
